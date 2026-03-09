@@ -1,0 +1,127 @@
+/* app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design Tokens ─────────────────────────────────────────── */
+:root {
+  --ivory:          #F7F3EE;
+  --ivory-dark:     #EDE5D8;
+  --charcoal:       #1A1917;
+  --charcoal-soft:  #252420;
+  --charcoal-mid:   #2E2C28;
+  --gold:           #C9A96E;
+  --gold-light:     #E2C99A;
+  --gold-dark:      #A8813E;
+  --sand:           #D4C5A9;
+  --sand-light:     #EDE4D6;
+  --muted:          #8A857C;
+}
+
+/* ─── Base ──────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--ivory);
+  color:       var(--charcoal);
+  font-family: var(--font-jost), 'Cairo', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-cormorant), serif;
+  font-weight: 400;
+  line-height: 1.12;
+}
+
+[dir="rtl"] body {
+  font-family: 'Cairo', var(--font-jost), sans-serif;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 5px; }
+::-webkit-scrollbar-track  { background: var(--ivory-dark); }
+::-webkit-scrollbar-thumb  { background: var(--gold); border-radius: 2px; }
+
+/* ─── Utility layer ─────────────────────────────────────────── */
+@layer utilities {
+  .font-display  { font-family: var(--font-cormorant), serif; }
+  .font-body     { font-family: var(--font-jost), 'Cairo', sans-serif; }
+
+  .bg-ivory         { background-color: var(--ivory); }
+  .bg-ivory-dark    { background-color: var(--ivory-dark); }
+  .bg-charcoal      { background-color: var(--charcoal); }
+  .bg-charcoal-soft { background-color: var(--charcoal-soft); }
+  .bg-charcoal-mid  { background-color: var(--charcoal-mid); }
+  .bg-gold          { background-color: var(--gold); }
+  .bg-sand          { background-color: var(--sand); }
+  .bg-sand-light    { background-color: var(--sand-light); }
+
+  .text-ivory       { color: var(--ivory); }
+  .text-charcoal    { color: var(--charcoal); }
+  .text-gold        { color: var(--gold); }
+  .text-muted       { color: var(--muted); }
+  .text-sand        { color: var(--sand); }
+
+  .border-gold      { border-color: var(--gold); }
+  .border-sand      { border-color: var(--sand); }
+
+  .section-label {
+    @apply font-body text-[0.65rem] font-500 tracking-[0.3em] uppercase text-gold;
+  }
+
+  .section-title {
+    @apply font-display text-4xl md:text-5xl lg:text-[3.5rem] text-charcoal leading-tight;
+  }
+
+  .section-title-light {
+    @apply font-display text-4xl md:text-5xl lg:text-[3.5rem] text-ivory leading-tight;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-8 py-3.5 bg-gold text-ivory
+           text-[0.65rem] tracking-[0.25em] uppercase font-body font-400
+           transition-all duration-300 hover:bg-[var(--gold-dark)];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-8 py-3.5 border border-ivory/30 text-ivory
+           text-[0.65rem] tracking-[0.25em] uppercase font-body font-400
+           transition-all duration-300 hover:bg-ivory hover:text-charcoal hover:border-ivory;
+  }
+}
+
+/* ─── Keyframes ─────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(28px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@keyframes shimmer {
+  0%   { background-position:-200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes scaleIn {
+  from { opacity:0; transform:scale(0.94); }
+  to   { opacity:1; transform:scale(1); }
+}
+
+/* ─── Skeleton ──────────────────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg,
+    var(--ivory-dark) 25%,
+    var(--sand-light) 50%,
+    var(--ivory-dark) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite;
+}
+
+/* ─── Lightbox backdrop ─────────────────────────────────────── */
+.lb-backdrop {
+  backdrop-filter: blur(20px) saturate(0.6);
+  -webkit-backdrop-filter: blur(20px) saturate(0.6);
+}
+
+/* ─── BA slider cursor ──────────────────────────────────────── */
+.ba-container { cursor: ew-resize; touch-action: pan-y; }
