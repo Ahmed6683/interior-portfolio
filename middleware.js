@@ -8,6 +8,7 @@ import { NextResponse }          from "next/server";
 import { createMiddlewareClient } from "@/lib/supabase/client";
 
 export async function middleware(request) {
+export const runtime = 'edge';
   const response = NextResponse.next({
     request: { headers: request.headers },
   });
