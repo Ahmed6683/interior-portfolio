@@ -4,8 +4,6 @@
 // Refreshes the Supabase session on every request so JWTs never go stale.
 // ─────────────────────────────────────────────────────────────────────────────
 
-export const runtime = 'edge';
-
 import { NextResponse }          from "next/server";
 import { createMiddlewareClient } from "@/lib/supabase/client";
 
